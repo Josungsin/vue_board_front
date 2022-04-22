@@ -15,13 +15,14 @@
           </thead>
           <tbody>
           <tr :key="i" v-for="(board, i) in boardList">
-            <td>{{ board.idx }}</td>
+            <td>{{ i+1 }}</td>
             <td>{{ board.title }}</td>
             <td>{{ board.content }}</td>
             <td>{{ board.regDate }}</td>
           </tr>
           </tbody>
         </table>
+        <router-link to="/write-board"><button type="button" class="btn-sm btn-primary" style="float: right">글쓰기</button></router-link>
       </div>
 
       <div class="col"></div>

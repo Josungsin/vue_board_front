@@ -4,6 +4,7 @@ import Home from "@/views/Home";
 import FreeBoard from "@/views/FreeBoard";
 import VideoFrom from "@/views/VideoForm";
 import VideoList from "@/views/VideoList";
+import WriteBoard from "@/views/WriteBoard";
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         path: '/video-list',
         name: 'VideoList',
         component: VideoList
+    },
+    {
+        path: '/write-board',
+        name:'WriteBoard',
+        component: WriteBoard
     }
 ]
 

@@ -81,7 +81,8 @@ export default {
         alert("이름을 입력해주세요")
       } else if (!this.password) {
         alert("비밀번호를 입력해주세요")
-      } else this.$axios.post('/api/signup',
+      }
+      this.$axios.post('/api/signup',
           {
             email: this.email,
             userName: this.name,
