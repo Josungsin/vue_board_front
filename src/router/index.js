@@ -1,10 +1,11 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import SignUp from "@/views/SignUp";
 import Home from "@/views/Home";
-import FreeBoard from "@/views/FreeBoard";
+import BoardList from "@/views/BoardList";
 import VideoFrom from "@/views/VideoForm";
 import VideoList from "@/views/VideoList";
 import WriteBoard from "@/views/WriteBoard";
+import DetailBoard from "@/views/DetailBoard";
 
 const routes = [
     {
@@ -19,8 +20,8 @@ const routes = [
     },
     {
         path: '/board',
-        name: 'FreeBoard',
-        component: FreeBoard
+        name: 'BoardList',
+        component: BoardList
     },
     {
         path: '/video',
@@ -36,6 +37,11 @@ const routes = [
         path: '/write-board',
         name:'WriteBoard',
         component: WriteBoard
+    },
+    {
+        path: '/detail-board/:boardIdx',
+        name: 'DetailBoard',
+        component: DetailBoard
     }
 ]
 

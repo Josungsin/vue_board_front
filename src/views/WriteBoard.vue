@@ -4,6 +4,16 @@
       <div class="col-3"></div>
 
       <div class="col-6" style="padding-top: 50px">
+        <div class="row">
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col-3">
+            <select style="float: right" class="form-select" @change="selectCategory($event)">
+              <option selected>카테고리</option>
+              <option :key="i" v-for="(category, i) in categoryList" :value="category.idx">{{ category.categoryName }}</option>
+            </select>
+          </div>
+        </div>
         <div class="mb-3">
           <label class="form-label">Email</label>
           <input type="email" class="form-control" placeholder="name@example.com" v-model="userEmail">
@@ -32,10 +42,25 @@ export default {
     return {
       userEmail: null,
       title: null,
-      content: null
+      content: null,
+      categoryList: [],
+      categoryIdx: {}
     }
   },
+  created() {
+    this.$axios.get('/api/board/category-list')
+        .then((res) => {
+          this.categoryList = res.data;
+          console.log(this.categoryList)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+  },
   methods: {
+    selectCategory($event){
+      this.categoryIdx = $event.target.value
+    },
     async savePosting() {
       if (!this.userEmail) {
         alert("이메일을 입력해주세요.")
@@ -48,7 +73,8 @@ export default {
           {
             userEmail: this.userEmail,
             title: this.title,
-            content: this.content
+            content: this.content,
+            categoryIdx: this.categoryIdx
           })
           .then(res => {
             this.$router.go(-1);
