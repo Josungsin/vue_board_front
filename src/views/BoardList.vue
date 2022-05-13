@@ -4,21 +4,19 @@
       <div class="col"></div>
 
       <div class="col-6" style="padding-top: 50px">
-
-        <div class="row">
+        <div class="row" style="padding-bottom: 10px">
           <div class="col-3">
             <select style="float: left" class="form-select" @change="selectSearchType($event)">
               <option selected>검색조건</option>
               <option value="TITLE">제목</option>
-              <option value="USER">이메일</option>
+              <option value="USER">이름</option>
             </select>
           </div>
-          <div class="col-9">
-            <form class="d-flex" style="margin-bottom: 20px">
-              <input class="form-control me-2" v-model="searchKeyword" aria-label="Search"
-                     @keyup.enter="searchGetList(searchKeyword)">
-              <button class="btn btn-outline-success" @click="getList(searchKeyword)">Search</button>
-            </form>
+          <div class="col-6" style="padding-left: 0px">
+            <input class="form-control" style="width: 125%" v-model="searchKeyword" @keyup.enter="getList(searchKeyword)">
+          </div>
+          <div class="col">
+            <button class="btn btn-outline-success" style="float: right" @click="getList(searchKeyword)">Search</button>
           </div>
         </div>
 
@@ -44,7 +42,6 @@
           <button type="button" class="btn-sm btn-primary" style="float: right">글쓰기</button>
         </router-link>
       </div>
-
       <div class="col"></div>
     </div>
   </div>
@@ -58,7 +55,7 @@ export default {
     return {
       boardList: [],
       boardIdx: null,
-      searchKeyword: null,
+      searchKeyword: '',
       searchType: null
     }
   },
@@ -67,7 +64,7 @@ export default {
   },
   methods: {
     selectSearchType($event) {
-      this.searchType = $event.target.value
+      return this.searchType = $event.target.value
     },
     getList(searchKeyword) {
       this.$axios.get("/api/board/list", {
@@ -87,7 +84,8 @@ export default {
     boardDetail(boardIdx) {
       this.boardIdx = boardIdx
       this.$router.push({name: "DetailBoard", params: {"boardIdx": boardIdx}})
-    }
+    },
+
   }
 }
 </script>

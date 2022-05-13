@@ -15,8 +15,8 @@
           </div>
         </div>
         <div class="mb-3">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-control" placeholder="name@example.com" v-model="userEmail">
+          <label class="form-label">이름</label>
+          <input type="text" class="form-control" v-model="userName">
         </div>
         <div class="mb-3">
           <label class="form-label">Title</label>
@@ -40,7 +40,7 @@ export default {
   name: "WriteBoard",
   data() {
     return {
-      userEmail: null,
+      userName: null,
       title: null,
       content: null,
       categoryList: [],
@@ -58,20 +58,18 @@ export default {
         })
   },
   methods: {
-    selectCategory($event){
+    selectCategory($event) {
       this.categoryIdx = $event.target.value
     },
     async savePosting() {
-      if (!this.userEmail) {
-        alert("이메일을 입력해주세요.")
-      } else if (!this.title) {
+      if (!this.title) {
         alert("제목을 입력해주세요.")
       } else if (!this.content) {
         alert("내용을 입력해주세요!")
       }
       await this.$axios.post('/api/board/save',
           {
-            userEmail: this.userEmail,
+            userName: this.userName,
             title: this.title,
             content: this.content,
             categoryIdx: this.categoryIdx

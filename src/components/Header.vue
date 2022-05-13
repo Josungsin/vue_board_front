@@ -25,8 +25,11 @@
             </ul>
           </li>
         </ul>
-        <div style="padding: 8px; margin-right: 20px; display: block;">
+        <div style="padding: 8px; display: block;">
           <router-link to="/signup" class="nav-link active" style="color: black">회원가입</router-link>
+        </div>
+        <div style="padding: 8px; display: block; margin-left: -20px">
+          <router-link to="/login" class="nav-link active" style="color: black">로그인</router-link>
         </div>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

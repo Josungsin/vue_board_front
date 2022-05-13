@@ -6,6 +6,7 @@ import VideoFrom from "@/views/VideoForm";
 import VideoList from "@/views/VideoList";
 import WriteBoard from "@/views/WriteBoard";
 import DetailBoard from "@/views/DetailBoard";
+import Login from "@/views/Login";
 
 const routes = [
     {
@@ -42,6 +43,11 @@ const routes = [
         path: '/detail-board/:boardIdx',
         name: 'DetailBoard',
         component: DetailBoard
+    },
+    {
+        path: '/login',
+        name: 'LoginPage',
+        component: Login
     }
 ]
 
